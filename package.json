@@ -1,6 +1,6 @@
 {
-  "name": "prisma-extension-nested-operations",
-  "version": "1.0.0-semantically-released",
+  "name": "@roundtreasury/prisma-extension-nested-operations",
+  "version": "1.3.0",
   "description": "Utils for creating Prisma client extensions with nested operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -58,7 +58,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/olivierwilkinson/prisma-extension-nested-operations.git"
+    "url": "https://github.com/round-cash/prisma-extension-nested-operations.git"
   },
   "release": {
     "branches": [
