@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
-import { Types } from "@prisma/client/runtime/library";
+import type { Prisma } from "@prisma/client";
+import type { Types } from "@prisma/client/runtime/library";
 import get from "lodash/get";
 
 import {

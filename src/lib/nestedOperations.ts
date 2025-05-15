@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
-import { BaseDMMF, Types } from "@prisma/client/runtime/library";
+import type { Prisma } from "@prisma/client";
+import type { BaseDMMF, Types } from "@prisma/client/runtime/library";
 
 import { OperationCall, NestedParams } from "./types";
 import { extractNestedOperations } from "./utils/extractNestedOperations";
@@ -48,6 +48,16 @@ export function withNestedOperations<
 
   return async (rootParams) => {
     let calls: OperationCall<ExtArgs>[] = [];
+
+    let dmmfToUse = dmmf;
+
+    if (!dmmfToUse) {
+      dmmfToUse = await import("@prisma/client").then((m) => m.Prisma.dmmf);
+    }
+
+    if (!dmmfToUse) {
+      throw new Error("Prisma.dmmf is required, please run prisma generate");
+    }
 
     try {
       const executionResults = await Promise.allSettled(
