@@ -1,19 +1,22 @@
-import { Prisma } from "@prisma/client";
+import type { Prisma } from "@prisma/client";
+import type { BaseDMMF } from "@prisma/client/runtime/library";
 
-if (!Prisma.dmmf) {
-  throw new Error(
-    "Prisma DMMF not found, please generate Prisma client using `npx prisma generate`"
-  );
+export function getRelationsByModel(
+  dmmf: BaseDMMF
+): Record<string, Prisma.DMMF.Field[]> {
+  const relationsByModel: Record<string, Prisma.DMMF.Field[]> = {};
+  dmmf.datamodel.models.forEach((model: Prisma.DMMF.Model) => {
+    relationsByModel[model.name] = model.fields.filter(
+      (field) => field.kind === "object" && field.relationName
+    );
+  });
+  return relationsByModel;
 }
 
-export const relationsByModel: Record<string, Prisma.DMMF.Field[]> = {};
-Prisma.dmmf.datamodel.models.forEach((model: Prisma.DMMF.Model) => {
-  relationsByModel[model.name] = model.fields.filter(
-    (field) => field.kind === "object" && field.relationName
-  );
-});
-
-export function findOppositeRelation(relation: Prisma.DMMF.Field) {
+export function findOppositeRelation(
+  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relation: Prisma.DMMF.Field
+): Prisma.DMMF.Field {
   const parentRelations =
     relationsByModel[relation.type as Prisma.ModelName] || [];
 

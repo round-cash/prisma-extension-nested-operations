@@ -1,11 +1,12 @@
 import { Prisma } from "@prisma/client";
-import { Types } from "@prisma/client/runtime/library";
+import { BaseDMMF, Types } from "@prisma/client/runtime/library";
 
 import { OperationCall, NestedParams } from "./types";
 import { extractNestedOperations } from "./utils/extractNestedOperations";
 import { executeOperation } from "./utils/execution";
 import { buildArgsFromCalls } from "./utils/params";
 import { buildTargetRelationPath } from "./utils/targets";
+import { getRelationsByModel } from "./utils/relations";
 import {
   addIdSymbolsToResult,
   getRelationResult,
@@ -32,6 +33,7 @@ export function withNestedOperations<
 >({
   $rootOperation,
   $allNestedOperations,
+  dmmf,
 }: {
   $rootOperation: NonNullable<
     Types.Extensions.DynamicQueryExtensionArgs<
@@ -40,6 +42,7 @@ export function withNestedOperations<
     >["$allModels"]["$allOperations"]
   >;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
+  dmmf?: BaseDMMF;
 }): typeof $rootOperation {
   return async (rootParams) => {
     let calls: OperationCall<ExtArgs>[] = [];
@@ -47,6 +50,7 @@ export function withNestedOperations<
     try {
       const executionResults = await Promise.allSettled(
         extractNestedOperations(
+          getRelationsByModel(dmmf ?? Prisma.dmmf),
           rootParams as NestedParams<ExtArgs>
         ).map((nestedOperation) =>
           executeOperation(
