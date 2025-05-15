@@ -4,8 +4,8 @@ import faker from "faker";
 import { get } from "lodash";
 
 import { withNestedOperations, NestedParams } from "../../src";
-import { relationsByModel } from "../../src/lib/utils/relations";
 import { LogicalOperator, Modifier } from "../../src/lib/types";
+import { getRelationsByModel } from "../../src/lib/utils/relations";
 import { createParams } from "./helpers/createParams";
 
 type OperationCall<Model extends Prisma.ModelName> = {
@@ -36,8 +36,9 @@ type OperationCall<Model extends Prisma.ModelName> = {
   logicalOperators?: LogicalOperator[];
 };
 
-function nestedParamsFromCall<Model extends Prisma.ModelName,
-ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
+function nestedParamsFromCall<
+  Model extends Prisma.ModelName,
+  ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
   rootParams: NestedParams<ExtArgs>,
   call: OperationCall<Model>
@@ -65,6 +66,7 @@ function getModelRelation<Model extends Prisma.ModelName>(
   model: Model,
   relationName: string
 ): Prisma.DMMF.Field {
+  const relationsByModel = getRelationsByModel(Prisma.dmmf);
   const modelRelation = relationsByModel[model].find(
     (relation) => relation.name === relationName
   );
@@ -4118,7 +4120,9 @@ describe("calls", () => {
     "calls middleware with $description",
     async ({ rootParams, nestedCalls = [] }) => {
       const $rootOperation = jest.fn((params) => params.query(params.args));
-      const $allNestedOperations = jest.fn((params) => params.query(params.args));
+      const $allNestedOperations = jest.fn((params) =>
+        params.query(params.args)
+      );
       const allOperations = withNestedOperations({
         $rootOperation,
         $allNestedOperations,
