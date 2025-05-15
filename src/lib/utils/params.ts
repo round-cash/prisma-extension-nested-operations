@@ -1,4 +1,4 @@
-import { Types } from "@prisma/client/runtime/library";
+import type { Types } from "@prisma/client/runtime/library";
 import { merge, omit, get, set, unset } from "lodash";
 
 import {

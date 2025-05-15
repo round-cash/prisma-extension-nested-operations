@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
-import { Types } from "@prisma/client/runtime/library";
+import type { Prisma } from "@prisma/client";
+import type { Types } from "@prisma/client/runtime/library";
 import { DeferredPromise } from "@open-draft/deferred-promise";
 
 export type Modifier = "is" | "isNot" | "some" | "none" | "every";
@@ -68,7 +68,7 @@ export type Scope<ExtArgs extends Types.Extensions.InternalArgs> = {
 
 export type NestedParams<ExtArgs extends Types.Extensions.InternalArgs> = {
   query: (args: any, operation?: NestedOperation) => Prisma.PrismaPromise<any>;
-  model: keyof Prisma.TypeMap<ExtArgs>['model'];
+  model: keyof Prisma.TypeMap<ExtArgs>["model"];
   args: any;
   operation: NestedOperation;
   scope?: Scope<ExtArgs>;
