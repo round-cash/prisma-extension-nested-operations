@@ -18,6 +18,7 @@ describe("args", () => {
         params.args.test = "test";
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -43,6 +44,7 @@ describe("args", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -86,6 +88,7 @@ describe("args", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve({}));
@@ -118,6 +121,7 @@ describe("args", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -149,6 +153,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -191,6 +196,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -232,6 +238,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -284,6 +291,7 @@ describe("args", () => {
 
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -359,6 +367,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -413,6 +422,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -452,6 +462,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -553,6 +564,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -664,6 +676,7 @@ describe("args", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -704,6 +717,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -751,6 +765,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -811,6 +826,7 @@ describe("args", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -864,6 +880,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -918,6 +935,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -982,6 +1000,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1028,6 +1047,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1079,6 +1099,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1128,6 +1149,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1180,6 +1202,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1220,6 +1243,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1264,6 +1288,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1306,6 +1331,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1366,6 +1392,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1437,6 +1464,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1472,6 +1500,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1519,6 +1548,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1576,6 +1606,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1623,6 +1654,7 @@ describe("args", () => {
         }
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1691,6 +1723,7 @@ describe("args", () => {
 
         return params.query(params.args);
       },
+      dmmf: Prisma.dmmf,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));

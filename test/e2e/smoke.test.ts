@@ -78,6 +78,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
+              dmmf: Prisma.dmmf,
             }),
           },
         },
@@ -177,6 +178,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
+              dmmf: Prisma.dmmf,
             }),
           },
         },
@@ -220,6 +222,7 @@ describe("smoke", () => {
                 }
                 return query(args);
               },
+              dmmf: Prisma.dmmf,
             }),
           },
         },

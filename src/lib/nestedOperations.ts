@@ -42,9 +42,9 @@ export function withNestedOperations<
     >["$allModels"]["$allOperations"]
   >;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
-  dmmf?: BaseDMMF;
+  dmmf: BaseDMMF;
 }): typeof $rootOperation {
-  const relationsByModel = getRelationsByModel(dmmf ?? Prisma.dmmf);
+  const relationsByModel = getRelationsByModel(dmmf);
 
   return async (rootParams) => {
     let calls: OperationCall<ExtArgs>[] = [];

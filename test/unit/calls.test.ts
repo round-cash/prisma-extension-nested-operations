@@ -87,6 +87,7 @@ describe("calls", () => {
     const allOperations = withNestedOperations({
       $rootOperation,
       $allNestedOperations,
+      dmmf: Prisma.dmmf,
     });
 
     const params = createParams(query, "User", "create", {
@@ -4126,6 +4127,7 @@ describe("calls", () => {
       const allOperations = withNestedOperations({
         $rootOperation,
         $allNestedOperations,
+        dmmf: Prisma.dmmf,
       });
 
       await allOperations(rootParams as any);
