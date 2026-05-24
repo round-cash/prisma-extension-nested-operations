@@ -137,12 +137,39 @@ export function updateResultRelation(
   relationResult: any
 ) {
   if (Array.isArray(result)) {
+    // When relationResult is also an array, pre-build a Map keyed by parentIdSymbol
+    // so each row gets an O(1) lookup instead of calling filter()/find() over the
+    // entire relationResult array per row — reduces O(n*m) to O(n+m).
+    if (Array.isArray(relationResult)) {
+      const byParent = new Map<number, any[]>();
+      for (const item of relationResult) {
+        const pid: number | undefined = item[parentIdSymbol];
+        if (pid !== undefined) {
+          const list = byParent.get(pid) ?? [];
+          list.push(item);
+          byParent.set(pid, list);
+        }
+      }
+      result.forEach((item) => {
+        if (typeof item === "object" && item !== null && item[relation]) {
+          const children = byParent.get(item[idSymbol] as number) ?? [];
+          if (Array.isArray(item[relation])) {
+            item[relation] = children;
+          } else {
+            // toOne relation: take first match or null (mirrors original find() || null)
+            item[relation] = children[0] ?? null;
+          }
+        }
+      });
+      return result;
+    }
+
     result.forEach((item) => {
       if (typeof item === "object" && item !== null && item[relation]) {
         injectRelationResult(item, relation, relationResult);
       }
     });
-    
+
     return result;
   }
 
