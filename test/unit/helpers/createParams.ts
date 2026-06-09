@@ -1,15 +1,24 @@
 import type { ModelName } from "../../../generated/prisma/internal/prismaNamespace";
 import type {
-  UserDelegate, UserSelect, UserInclude,
-  PostDelegate, PostSelect, PostInclude,
-  ProfileDelegate, ProfileSelect, ProfileInclude,
-  CommentDelegate, CommentSelect, CommentInclude,
+  UserDelegate,
+  UserSelect,
+  UserInclude,
+  PostDelegate,
+  PostSelect,
+  PostInclude,
+  ProfileDelegate,
+  ProfileSelect,
+  ProfileInclude,
+  CommentDelegate,
+  CommentSelect,
+  CommentInclude,
 } from "../../../generated/prisma/models";
+import type * as Prisma from "../../../generated/prisma/internal/prismaNamespace";
 
-type AnyExtension = { client: any, model: any, query: any; result: any }
+type AnyExtension = { client: any; model: any; query: any; result: any };
 
 type DelegateByModel<Model extends ModelName> = Model extends "User"
-  ? UserDelegate<AnyExtension>
+  ? Prisma.UserDelegate<AnyExtension>
   : Model extends "Post"
   ? PostDelegate<AnyExtension>
   : Model extends "Profile"
@@ -87,12 +96,12 @@ type ArgsByAction<
 
 export const createParams = <
   Model extends ModelName,
-  Action extends ActionByModel<Model> = ActionByModel<Model>,
+  Action extends ActionByModel<Model> = ActionByModel<Model>
 >(
   query: (args: any) => Promise<any>,
   model: Model,
   operation: Action,
-  args: ArgsByAction<Model, Action>,
+  args: ArgsByAction<Model, Action>
 ) => ({
   query: query as any,
   model,

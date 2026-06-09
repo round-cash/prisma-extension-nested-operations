@@ -1,5 +1,4 @@
-import type { Prisma } from "@prisma/client";
-import type { Types } from "@prisma/client/runtime/client";
+import type { TypeMapDef, Types } from "@prisma/client/runtime/client";
 
 import { OperationCall, NestedParams } from "./types";
 import { extractNestedOperations } from "./utils/extractNestedOperations";
@@ -27,7 +26,8 @@ function isRejected(
 }
 
 export function withNestedOperations<
-  ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
+  ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs,
+  TMap extends TypeMapDef = TypeMapDef
 >({
   $rootOperation,
   $allNestedOperations,
@@ -35,9 +35,9 @@ export function withNestedOperations<
 }: {
   $rootOperation: NonNullable<
     Types.Extensions.DynamicQueryExtensionArgs<
-      { $allOperations: any },
-      Prisma.TypeMap<ExtArgs>
-    >["$allOperations"]
+      { $allModels: { $allOperations: any } },
+      TMap
+    >["$allModels"]["$allOperations"]
   >;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
   modelsMeta: ModelsMeta;
