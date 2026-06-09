@@ -1,6 +1,6 @@
 {
   "name": "@roundtreasury/prisma-extension-nested-operations",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Utils for creating Prisma client extensions with nested operations",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
