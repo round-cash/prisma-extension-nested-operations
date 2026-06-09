@@ -1,4 +1,5 @@
-import type { DynamicQueryExtensionCbArgs, TypeMapDef, Types } from "@prisma/client/runtime/client";
+import type { Prisma } from "@prisma/client";
+import type { Types } from "@prisma/client/runtime/client";
 
 import { OperationCall, NestedParams } from "./types";
 import { extractNestedOperations } from "./utils/extractNestedOperations";
@@ -32,13 +33,18 @@ export function withNestedOperations<
   $allNestedOperations,
   modelsMeta,
 }: {
-  $rootOperation: (params: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => Promise<any>;
+  $rootOperation: NonNullable<
+    Types.Extensions.DynamicQueryExtensionArgs<
+      { $allOperations: any },
+      Prisma.TypeMap<ExtArgs>
+    >["$allOperations"]
+  >;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
   modelsMeta: ModelsMeta;
 }): typeof $rootOperation {
   const relationsByModel = getRelationsByModel(modelsMeta);
 
-  return async (rootParams: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => {
+  return async (rootParams) => {
     let calls: OperationCall<ExtArgs>[] = [];
 
     try {
