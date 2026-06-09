@@ -1,5 +1,5 @@
 export { withNestedOperations } from "./lib/nestedOperations";
-export type { RelationMeta, RelationFieldMeta } from "./lib/utils/relations";
+export type { ModelsMeta, RelationField } from "./lib/utils/relations";
 
 export {
   NestedReadOperation,

@@ -1,4 +1,4 @@
-import { relationMeta } from "../../generated/nested-ops-meta";
+import { modelsMeta } from "../../generated/nested-ops-meta";
 import { Post, Prisma, User } from "../../generated/prisma/client";
 import faker from "faker";
 
@@ -78,7 +78,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
-              relationMeta,
+              modelsMeta,
             }),
           },
         },
@@ -178,7 +178,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
-              relationMeta,
+              modelsMeta,
             }),
           },
         },
@@ -222,7 +222,7 @@ describe("smoke", () => {
                 }
                 return query(args);
               },
-              relationMeta,
+              modelsMeta,
             }),
           },
         },

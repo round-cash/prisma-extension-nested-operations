@@ -5,7 +5,7 @@ import { extractNestedOperations } from "./utils/extractNestedOperations";
 import { executeOperation } from "./utils/execution";
 import { buildArgsFromCalls } from "./utils/params";
 import { buildTargetRelationPath } from "./utils/targets";
-import { getRelationsByModel, RelationMeta } from "./utils/relations";
+import { getRelationsByModel, ModelsMeta } from "./utils/relations";
 import {
   addIdSymbolsToResult,
   getRelationResult,
@@ -30,13 +30,13 @@ export function withNestedOperations<
 >({
   $rootOperation,
   $allNestedOperations,
-  relationMeta,
+  modelsMeta,
 }: {
   $rootOperation: (params: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => Promise<any>;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
-  relationMeta: RelationMeta;
+  modelsMeta: ModelsMeta;
 }): typeof $rootOperation {
-  const relationsByModel = getRelationsByModel(relationMeta);
+  const relationsByModel = getRelationsByModel(modelsMeta);
 
   return async (rootParams: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => {
     let calls: OperationCall<ExtArgs>[] = [];

@@ -1,6 +1,3 @@
-export type RelationFieldMeta = { kind: string; isList: boolean; type: string; relationName: string };
-export type RelationMeta = Record<string, Record<string, RelationFieldMeta>>;
-
 export type RelationField = {
   name: string;
   kind: string;
@@ -9,20 +6,14 @@ export type RelationField = {
   isList: boolean;
 };
 
+export type ModelsMeta = Record<string, { uniqueFields: string[]; uniqueIndexFields: string[]; relations: RelationField[] }>;
+
 export function getRelationsByModel(
-  relationMeta: RelationMeta
+  modelsMeta: ModelsMeta
 ): Record<string, RelationField[]> {
   const relationsByModel: Record<string, RelationField[]> = {};
-  for (const [modelName, fields] of Object.entries(relationMeta)) {
-    relationsByModel[modelName] = Object.entries(fields).map(
-      ([fieldName, meta]): RelationField => ({
-        name: fieldName,
-        kind: meta.kind,
-        type: meta.type,
-        relationName: meta.relationName,
-        isList: meta.isList,
-      })
-    );
+  for (const [modelName, meta] of Object.entries(modelsMeta)) {
+    relationsByModel[modelName] = meta.relations;
   }
   return relationsByModel;
 }

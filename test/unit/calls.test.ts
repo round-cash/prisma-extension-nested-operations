@@ -1,4 +1,4 @@
-import { relationMeta } from "../../generated/nested-ops-meta";
+import { modelsMeta } from "../../generated/nested-ops-meta";
 import type { ModelName } from "../../generated/prisma/internal/prismaNamespace";
 import { Types } from "@prisma/client/runtime/client";
 import type { RelationField } from "../../src/lib/utils/relations";
@@ -68,7 +68,7 @@ function getModelRelation<Model extends ModelName>(
   model: Model,
   relationName: string
 ): RelationField {
-  const relationsByModel = getRelationsByModel(relationMeta);
+  const relationsByModel = getRelationsByModel(modelsMeta);
   const modelRelation = relationsByModel[model].find(
     (relation) => relation.name === relationName
   );
@@ -89,7 +89,7 @@ describe("calls", () => {
     const allOperations = withNestedOperations({
       $rootOperation,
       $allNestedOperations,
-      relationMeta,
+      modelsMeta,
     });
 
     const params = createParams(query, "User", "create", {
@@ -4129,7 +4129,7 @@ describe("calls", () => {
       const allOperations = withNestedOperations({
         $rootOperation,
         $allNestedOperations,
-      relationMeta,
+      modelsMeta,
       });
 
       await allOperations(rootParams as any);

@@ -1,4 +1,4 @@
-import { relationMeta } from "../../generated/nested-ops-meta";
+import { modelsMeta } from "../../generated/nested-ops-meta";
 import faker from "faker";
 
 import { withNestedOperations } from "../../src";
@@ -26,7 +26,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() => Promise.resolve(null));
@@ -46,7 +46,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() => Promise.resolve(1));
@@ -64,7 +64,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const email = faker.internet.email();
@@ -94,7 +94,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const clientResult = [
@@ -166,7 +166,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const clientResult = [
@@ -241,7 +241,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const clientResult = [
@@ -326,7 +326,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const email = faker.internet.email();
@@ -358,7 +358,7 @@ describe("modifying results", () => {
         await wait(100);
         return addReturnedDate(result);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const email = faker.internet.email();
@@ -395,7 +395,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -450,7 +450,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -504,7 +504,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -559,7 +559,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -616,7 +616,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -690,7 +690,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -763,7 +763,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -837,7 +837,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -907,7 +907,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1004,7 +1004,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1100,7 +1100,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1197,7 +1197,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1296,7 +1296,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -1445,7 +1445,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -1593,7 +1593,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -1742,7 +1742,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -1887,7 +1887,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1957,7 +1957,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2027,7 +2027,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2114,7 +2114,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2197,7 +2197,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2237,7 +2237,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2307,7 +2307,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2362,7 +2362,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2433,7 +2433,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2479,7 +2479,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2517,7 +2517,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2565,7 +2565,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2616,7 +2616,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2686,7 +2686,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>
@@ -2761,7 +2761,7 @@ describe("modifying results", () => {
         await wait(300);
         return addReturnedDate(result);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() =>

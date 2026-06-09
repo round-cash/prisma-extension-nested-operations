@@ -1,4 +1,4 @@
-import { relationMeta } from "../../generated/nested-ops-meta";
+import { modelsMeta } from "../../generated/nested-ops-meta";
 import faker from "faker";
 import { get, set } from "lodash";
 
@@ -37,7 +37,7 @@ describe("operations", () => {
 
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -105,7 +105,7 @@ describe("operations", () => {
 
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -159,7 +159,7 @@ describe("operations", () => {
 
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -214,7 +214,7 @@ describe("operations", () => {
 
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -301,7 +301,7 @@ describe("operations", () => {
 
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn((_: any) => Promise.resolve(null));
@@ -368,7 +368,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -416,7 +416,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -457,7 +457,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -497,7 +497,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -541,7 +541,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -584,7 +584,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -622,7 +622,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -666,7 +666,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -709,7 +709,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -756,7 +756,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -807,7 +807,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -852,7 +852,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -896,7 +896,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -939,7 +939,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -985,7 +985,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1041,7 +1041,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1095,7 +1095,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1149,7 +1149,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1199,7 +1199,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1245,7 +1245,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1295,7 +1295,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1344,7 +1344,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1392,7 +1392,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1447,7 +1447,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1490,7 +1490,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1538,7 +1538,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1578,7 +1578,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1629,7 +1629,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1679,7 +1679,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1726,7 +1726,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1771,7 +1771,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1818,7 +1818,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1860,7 +1860,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1902,7 +1902,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1947,7 +1947,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -1993,7 +1993,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2040,7 +2040,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2087,7 +2087,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2129,7 +2129,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2175,7 +2175,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2224,7 +2224,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2274,7 +2274,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2325,7 +2325,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2370,7 +2370,7 @@ describe("operations", () => {
           }
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2414,7 +2414,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2449,7 +2449,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2490,7 +2490,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2548,7 +2548,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2611,7 +2611,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2667,7 +2667,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2732,7 +2732,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2813,7 +2813,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2879,7 +2879,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2931,7 +2931,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -2979,7 +2979,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3028,7 +3028,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3067,7 +3067,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3117,7 +3117,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3169,7 +3169,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3204,7 +3204,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3239,7 +3239,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3274,7 +3274,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));
@@ -3309,7 +3309,7 @@ describe("operations", () => {
 
           return params.query(params.args);
         },
-      relationMeta,
+      modelsMeta,
       });
 
       const query = jest.fn((_: any) => Promise.resolve(null));

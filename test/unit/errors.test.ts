@@ -1,4 +1,4 @@
-import { relationMeta } from "../../generated/nested-ops-meta";
+import { modelsMeta } from "../../generated/nested-ops-meta";
 import faker from "faker";
 
 import { withNestedOperations } from "../../src";
@@ -21,7 +21,7 @@ describe("errors", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -42,7 +42,7 @@ describe("errors", () => {
         }
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -66,7 +66,7 @@ describe("errors", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = jest.fn(() => {
@@ -94,7 +94,7 @@ describe("errors", () => {
         await createAsyncError();
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -119,7 +119,7 @@ describe("errors", () => {
         }
         return result;
       },
-      relationMeta,
+      modelsMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
