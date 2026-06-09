@@ -1,9 +1,10 @@
+import { relationMeta } from "../../generated/nested-ops-meta";
 import faker from "faker";
 
 import { withNestedOperations } from "../../src";
 import { createParams } from "./helpers/createParams";
 import { wait } from "./helpers/wait";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma/client";
 
 async function createAsyncError() {
   await wait(100);
@@ -20,7 +21,7 @@ describe("errors", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -41,7 +42,7 @@ describe("errors", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -65,7 +66,7 @@ describe("errors", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() => {
@@ -93,7 +94,7 @@ describe("errors", () => {
         await createAsyncError();
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = (_: any) => Promise.resolve({});
@@ -118,7 +119,7 @@ describe("errors", () => {
         }
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = (_: any) => Promise.resolve({});

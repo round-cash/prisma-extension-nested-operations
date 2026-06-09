@@ -1,38 +1,44 @@
-import { Prisma } from "@prisma/client";
+import type { ModelName } from "../../../generated/prisma/internal/prismaNamespace";
+import type {
+  UserDelegate, UserSelect, UserInclude,
+  PostDelegate, PostSelect, PostInclude,
+  ProfileDelegate, ProfileSelect, ProfileInclude,
+  CommentDelegate, CommentSelect, CommentInclude,
+} from "../../../generated/prisma/models";
 
 type AnyExtension = { client: any, model: any, query: any; result: any }
 
-type DelegateByModel<Model extends Prisma.ModelName> = Model extends "User"
-  ? Prisma.UserDelegate<AnyExtension>
+type DelegateByModel<Model extends ModelName> = Model extends "User"
+  ? UserDelegate<AnyExtension>
   : Model extends "Post"
-  ? Prisma.PostDelegate<AnyExtension>
+  ? PostDelegate<AnyExtension>
   : Model extends "Profile"
-  ? Prisma.ProfileDelegate<AnyExtension>
+  ? ProfileDelegate<AnyExtension>
   : Model extends "Comment"
-  ? Prisma.CommentDelegate<AnyExtension>
+  ? CommentDelegate<AnyExtension>
   : never;
 
-type SelectByModel<Model extends Prisma.ModelName> = Model extends "User"
-  ? Prisma.UserSelect
+type SelectByModel<Model extends ModelName> = Model extends "User"
+  ? UserSelect
   : Model extends "Post"
-  ? Prisma.PostSelect
+  ? PostSelect
   : Model extends "Profile"
-  ? Prisma.ProfileSelect
+  ? ProfileSelect
   : Model extends "Comment"
-  ? Prisma.CommentSelect
+  ? CommentSelect
   : never;
 
-type IncludeByModel<Model extends Prisma.ModelName> = Model extends "User"
-  ? Prisma.UserInclude
+type IncludeByModel<Model extends ModelName> = Model extends "User"
+  ? UserInclude
   : Model extends "Post"
-  ? Prisma.PostInclude
+  ? PostInclude
   : Model extends "Profile"
-  ? Prisma.ProfileInclude
+  ? ProfileInclude
   : Model extends "Comment"
-  ? Prisma.CommentInclude
+  ? CommentInclude
   : never;
 
-type ActionByModel<Model extends Prisma.ModelName> =
+type ActionByModel<Model extends ModelName> =
   | keyof DelegateByModel<Model>
   | "connectOrCreate"
   | "select"
@@ -40,7 +46,7 @@ type ActionByModel<Model extends Prisma.ModelName> =
   | "where";
 
 type ArgsByAction<
-  Model extends Prisma.ModelName,
+  Model extends ModelName,
   Action extends ActionByModel<Model>
 > = Action extends "create"
   ? Parameters<DelegateByModel<Model>["create"]>[0]
@@ -78,13 +84,9 @@ type ArgsByAction<
   : Action extends "include"
   ? IncludeByModel<Model>
   : never;
-  
-/**
- * Creates params objects with strict typing of the `args` object to ensure it
- * is valid for the `model` and `action` passed.
- */
+
 export const createParams = <
-  Model extends Prisma.ModelName,
+  Model extends ModelName,
   Action extends ActionByModel<Model> = ActionByModel<Model>,
 >(
   query: (args: any) => Promise<any>,

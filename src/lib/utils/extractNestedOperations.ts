@@ -1,5 +1,4 @@
-import type { Prisma } from "@prisma/client";
-import type { Types } from "@prisma/client/runtime/library";
+import type { Types } from "@prisma/client/runtime/client";
 import get from "lodash/get";
 
 import {
@@ -15,7 +14,7 @@ import {
   modifiers,
   readOperations,
 } from "./operations";
-import { findOppositeRelation } from "./relations";
+import { findOppositeRelation, type RelationField } from "./relations";
 
 type NestedOperationInfo<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
@@ -47,7 +46,7 @@ export const fieldsByWriteOperation: Record<
 export function extractRelationLogicalWhereOperations<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
-  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relationsByModel: Record<string, RelationField[]>,
   params: NestedParams<ExtArgs>,
   parentTarget?: Target,
   parentOperations: { logicalOperator: LogicalOperator; index?: number }[] = []
@@ -89,7 +88,7 @@ export function extractRelationLogicalWhereOperations<
     });
 
     relations.forEach((relation) => {
-      const model = relation.type as Prisma.ModelName;
+      const model = relation.type;
       const oppositeRelation = findOppositeRelation(relationsByModel, relation);
 
       if (Array.isArray(logicalArg)) {
@@ -228,7 +227,7 @@ export function extractRelationLogicalWhereOperations<
 export function extractRelationWhereOperations<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
-  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relationsByModel: Record<string, RelationField[]>,
   params: NestedParams<ExtArgs>,
   parentTarget?: Target
 ): NestedOperationInfo[] {
@@ -241,7 +240,7 @@ export function extractRelationWhereOperations<
   );
 
   relations.forEach((relation) => {
-    const model = relation.type as Prisma.ModelName;
+    const model = relation.type;
     const oppositeRelation = findOppositeRelation(relationsByModel, relation);
 
     const baseArgPath = params.scope ? ["args"] : ["args", "where"];
@@ -308,7 +307,7 @@ export function extractRelationWhereOperations<
 export function extractRelationWriteOperations<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
-  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relationsByModel: Record<string, RelationField[]>,
   params: NestedParams<ExtArgs>,
   parentTarget?: Target
 ): NestedOperationInfo[] {
@@ -320,7 +319,7 @@ export function extractRelationWriteOperations<
   const fields = fieldsByWriteOperation[params.operation] || [];
 
   relations.forEach((relation) => {
-    const model = relation.type as Prisma.ModelName;
+    const model = relation.type;
     const oppositeRelation = findOppositeRelation(relationsByModel, relation);
 
     fields.forEach((field) => {
@@ -403,7 +402,7 @@ export function extractRelationWriteOperations<
 export function extractRelationReadOperations<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
-  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relationsByModel: Record<string, RelationField[]>,
   params: NestedParams<ExtArgs>,
   parentTarget?: Target
 ): NestedOperationInfo[] {
@@ -411,7 +410,7 @@ export function extractRelationReadOperations<
   const nestedOperations: NestedOperationInfo[] = [];
 
   relations.forEach((relation) => {
-    const model = relation.type as Prisma.ModelName;
+    const model = relation.type;
     const oppositeRelation = findOppositeRelation(relationsByModel, relation);
 
     readOperations.forEach((operation) => {
@@ -533,7 +532,7 @@ export function extractRelationReadOperations<
 export function extractNestedOperations<
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
-  relationsByModel: Record<string, Prisma.DMMF.Field[]>,
+  relationsByModel: Record<string, RelationField[]>,
   params: NestedParams<ExtArgs>
 ): NestedOperationInfo[] {
   return [

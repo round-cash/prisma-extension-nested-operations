@@ -56,34 +56,62 @@
 
 ## Installation
 
-This module is distributed via [npm][npm] which is bundled with [node][node] and
-should be installed as one of your project's dependencies:
-
 ```
-npm install prisma-extension-nested-operations
+npm install @roundtreasury/prisma-extension-nested-operations
 ```
 
-`@prisma/client` is a peer dependency of this library, so you will need to
-install it if you haven't already:
+Requires `@prisma/client >= 7.8.0`.
+
+### Generator Setup
+
+Add the generator to your `prisma/schema.prisma`:
+
+```prisma
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+generator nestedOperationsMeta {
+  provider = "prisma-extension-nested-operations-generator"
+  output   = "../generated/nested-ops-meta"
+}
+```
+
+Run `prisma generate` to produce the metadata file.
+
+### Client Setup
+
+Prisma 7 requires a database adapter. Install the one matching your database, e.g. for PostgreSQL:
 
 ```
-npm install @prisma/client
+npm install @prisma/adapter-pg
 ```
 
-You must have at least @prisma/client version 4.16.0 installed.
+Construct your client with the adapter:
+
+```javascript
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../generated/prisma/client";
+
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+export const prisma = new PrismaClient({ adapter });
+```
 
 ## Usage
 
-The `withNestedOperations()` function takes and object with two properties, `$rootOperation()` and `$allNestedOperations()`.
-The return value is an `$allOperations` hook, so it can be passed directly to an extensions `$allOperations` hook.
+The `withNestedOperations()` function takes an object with `$rootOperation()`, `$allNestedOperations()`, and `relationMeta` (imported from the generated metadata file).
+The return value is an `$allOperations` hook.
 
 ```javascript
-import { withNestedOperations } from "prisma-extension-nested-operations";
+import { withNestedOperations } from "@roundtreasury/prisma-extension-nested-operations";
+import { relationMeta } from "../generated/nested-ops-meta";
 
 client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           // update root params here
           const result = params.query(params.args);
@@ -129,17 +157,25 @@ For more information on the `relations` field see the [Relations](#Relations) se
 The type for the params object is:
 
 ```typescript
+type RelationField = {
+  name: string;
+  kind: string;
+  type: string;
+  relationName: string;
+  isList: boolean;
+};
+
 type NestedParams<ExtArgs> = {
-  query: (args: any, operation?: NestedOperation) => Prisma.PrismaPromise<any>;
-  model: keyof Prisma.TypeMap<ExtArgs>["model"];
+  query: (args: any, operation?: NestedOperation) => Promise<any>;
+  model: string;
   args: any;
   operation: NestedOperation;
   scope?: Scope<ExtArgs>;
 };
 
-export type Scope<ExtArgs> = {
+type Scope<ExtArgs> = {
   parentParams: Omit<NestedParams<ExtArgs>, "query">;
-  relations: { to: Prisma.DMMF.Field; from: Prisma.DMMF.Field };
+  relations: { to: RelationField; from: RelationField };
   modifier?: Modifier;
   logicalOperators?: LogicalOperator[];
 };
@@ -279,6 +315,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         $rootOperation: (params) => {
           return params.query(params.args);
         },
@@ -428,6 +465,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         $rootOperation: (params) => {
           return params.query(params.args);
         },
@@ -950,6 +988,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           // we only want to add default values for the "Invite" model
           if (params.model !== "Invite") {
@@ -990,6 +1029,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           [...]
         },
@@ -1032,6 +1072,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           // don't handle operations that only accept unique fields such as findUnique or upsert
           if (
@@ -1070,6 +1111,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           [...]
         },
@@ -1104,6 +1146,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           const result = await params.query(params.args);
 
@@ -1151,6 +1194,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           [...]
         },
@@ -1188,6 +1232,7 @@ const client = _client.$extends({
   query: {
     $allModels: {
       $allOperations: withNestedOperations({
+        relationMeta,
         async $rootOperation(params) {
           [...]
         },

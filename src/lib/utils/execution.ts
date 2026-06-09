@@ -1,4 +1,4 @@
-import type { Types } from "@prisma/client/runtime/library";
+import type { Types } from "@prisma/client/runtime/client";
 import { DeferredPromise } from "@open-draft/deferred-promise";
 import { omit } from "lodash";
 

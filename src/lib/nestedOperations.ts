@@ -1,20 +1,17 @@
-import type { Prisma } from "@prisma/client";
-import type { BaseDMMF, Types } from "@prisma/client/runtime/library";
+import type { DynamicQueryExtensionCbArgs, TypeMapDef, Types } from "@prisma/client/runtime/client";
 
 import { OperationCall, NestedParams } from "./types";
 import { extractNestedOperations } from "./utils/extractNestedOperations";
 import { executeOperation } from "./utils/execution";
 import { buildArgsFromCalls } from "./utils/params";
 import { buildTargetRelationPath } from "./utils/targets";
-import { getRelationsByModel } from "./utils/relations";
+import { getRelationsByModel, RelationMeta } from "./utils/relations";
 import {
   addIdSymbolsToResult,
   getRelationResult,
   stripIdSymbolsFromResult,
   updateResultRelation,
 } from "./utils/results";
-
-type NonNullable<T> = Exclude<T, null | undefined>;
 
 function isFulfilled(
   result: PromiseSettledResult<any>
@@ -33,31 +30,16 @@ export function withNestedOperations<
 >({
   $rootOperation,
   $allNestedOperations,
-  dmmf,
+  relationMeta,
 }: {
-  $rootOperation: NonNullable<
-    Types.Extensions.DynamicQueryExtensionArgs<
-      { $allModels: { $allOperations: any } },
-      Prisma.TypeMap<ExtArgs>
-    >["$allModels"]["$allOperations"]
-  >;
+  $rootOperation: (params: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => Promise<any>;
   $allNestedOperations: (params: NestedParams<ExtArgs>) => Promise<any>;
-  dmmf: BaseDMMF;
+  relationMeta: RelationMeta;
 }): typeof $rootOperation {
-  const relationsByModel = getRelationsByModel(dmmf);
+  const relationsByModel = getRelationsByModel(relationMeta);
 
-  return async (rootParams) => {
+  return async (rootParams: DynamicQueryExtensionCbArgs<TypeMapDef, any, any, any>) => {
     let calls: OperationCall<ExtArgs>[] = [];
-
-    let dmmfToUse = dmmf;
-
-    if (!dmmfToUse) {
-      dmmfToUse = await import("@prisma/client").then((m) => m.Prisma.dmmf);
-    }
-
-    if (!dmmfToUse) {
-      throw new Error("Prisma.dmmf is required, please run prisma generate");
-    }
 
     try {
       const executionResults = await Promise.allSettled(

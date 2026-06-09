@@ -1,4 +1,5 @@
-import { Post, Prisma, User } from "@prisma/client";
+import { relationMeta } from "../../generated/nested-ops-meta";
+import { Post, Prisma, User } from "../../generated/prisma/client";
 import faker from "faker";
 
 import { withNestedOperations } from "../../src";
@@ -77,7 +78,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
-              dmmf: Prisma.dmmf,
+              relationMeta,
             }),
           },
         },
@@ -177,7 +178,7 @@ describe("smoke", () => {
               $allNestedOperations: ({ args, query }) => {
                 return query(args);
               },
-              dmmf: Prisma.dmmf,
+              relationMeta,
             }),
           },
         },
@@ -221,7 +222,7 @@ describe("smoke", () => {
                 }
                 return query(args);
               },
-              dmmf: Prisma.dmmf,
+              relationMeta,
             }),
           },
         },

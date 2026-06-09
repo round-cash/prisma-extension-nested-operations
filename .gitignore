@@ -1,11 +1,13 @@
 # Dependency directories
 node_modules/
 
-# Build output directory
+# Build output directory
 dist
 
-# Test coverage directory
+# Test coverage directory
 coverage
 
 # vscode
 .vscode
+
+generated/

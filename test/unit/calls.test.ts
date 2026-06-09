@@ -1,5 +1,7 @@
-import { Prisma } from "@prisma/client";
-import { Types } from "@prisma/client/runtime/library";
+import { relationMeta } from "../../generated/nested-ops-meta";
+import type { ModelName } from "../../generated/prisma/internal/prismaNamespace";
+import { Types } from "@prisma/client/runtime/client";
+import type { RelationField } from "../../src/lib/utils/relations";
 import faker from "faker";
 import { get } from "lodash";
 
@@ -8,7 +10,7 @@ import { LogicalOperator, Modifier } from "../../src/lib/types";
 import { getRelationsByModel } from "../../src/lib/utils/relations";
 import { createParams } from "./helpers/createParams";
 
-type OperationCall<Model extends Prisma.ModelName> = {
+type OperationCall<Model extends ModelName> = {
   model: Model;
   operation:
     | "create"
@@ -29,15 +31,15 @@ type OperationCall<Model extends Prisma.ModelName> = {
   argsPath: string;
   scope?: OperationCall<any>;
   relations: {
-    to: Prisma.DMMF.Field;
-    from: Prisma.DMMF.Field;
+    to: RelationField;
+    from: RelationField;
   };
   modifier?: Modifier;
   logicalOperators?: LogicalOperator[];
 };
 
 function nestedParamsFromCall<
-  Model extends Prisma.ModelName,
+  Model extends ModelName,
   ExtArgs extends Types.Extensions.InternalArgs = Types.Extensions.DefaultArgs
 >(
   rootParams: NestedParams<ExtArgs>,
@@ -62,11 +64,11 @@ function nestedParamsFromCall<
   };
 }
 
-function getModelRelation<Model extends Prisma.ModelName>(
+function getModelRelation<Model extends ModelName>(
   model: Model,
   relationName: string
-): Prisma.DMMF.Field {
-  const relationsByModel = getRelationsByModel(Prisma.dmmf);
+): RelationField {
+  const relationsByModel = getRelationsByModel(relationMeta);
   const modelRelation = relationsByModel[model].find(
     (relation) => relation.name === relationName
   );
@@ -87,7 +89,7 @@ describe("calls", () => {
     const allOperations = withNestedOperations({
       $rootOperation,
       $allNestedOperations,
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const params = createParams(query, "User", "create", {
@@ -4127,7 +4129,7 @@ describe("calls", () => {
       const allOperations = withNestedOperations({
         $rootOperation,
         $allNestedOperations,
-        dmmf: Prisma.dmmf,
+      relationMeta,
       });
 
       await allOperations(rootParams as any);

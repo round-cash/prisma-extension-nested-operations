@@ -1,9 +1,10 @@
+import { relationMeta } from "../../generated/nested-ops-meta";
 import faker from "faker";
 
 import { withNestedOperations } from "../../src";
 import { createParams } from "./helpers/createParams";
 import { wait } from "./helpers/wait";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma/client";
 
 function addReturnedDate(result: any) {
   if (typeof result === "undefined") return;
@@ -25,7 +26,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() => Promise.resolve(null));
@@ -45,7 +46,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() => Promise.resolve(1));
@@ -63,7 +64,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const email = faker.internet.email();
@@ -93,7 +94,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const clientResult = [
@@ -165,7 +166,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const clientResult = [
@@ -240,7 +241,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const clientResult = [
@@ -325,7 +326,7 @@ describe("modifying results", () => {
       $allNestedOperations: (params) => {
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const email = faker.internet.email();
@@ -357,7 +358,7 @@ describe("modifying results", () => {
         await wait(100);
         return addReturnedDate(result);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const email = faker.internet.email();
@@ -394,7 +395,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -449,7 +450,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -503,7 +504,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -558,7 +559,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -615,7 +616,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -689,7 +690,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -762,7 +763,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -836,7 +837,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -906,7 +907,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1003,7 +1004,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1099,7 +1100,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1196,7 +1197,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1295,7 +1296,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -1444,7 +1445,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -1592,7 +1593,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -1741,7 +1742,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -1886,7 +1887,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -1956,7 +1957,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2026,7 +2027,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2113,7 +2114,7 @@ describe("modifying results", () => {
 
         return result;
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn((args) =>
@@ -2196,7 +2197,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2236,7 +2237,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2306,7 +2307,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2361,7 +2362,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2432,7 +2433,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2478,7 +2479,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2516,7 +2517,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2564,7 +2565,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2615,7 +2616,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2685,7 +2686,7 @@ describe("modifying results", () => {
         }
         return params.query(params.args);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>
@@ -2760,7 +2761,7 @@ describe("modifying results", () => {
         await wait(300);
         return addReturnedDate(result);
       },
-      dmmf: Prisma.dmmf,
+      relationMeta,
     });
 
     const query = jest.fn(() =>

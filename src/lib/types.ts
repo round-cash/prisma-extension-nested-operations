@@ -1,6 +1,6 @@
-import type { Prisma } from "@prisma/client";
-import type { Types } from "@prisma/client/runtime/library";
+import type { TypeMapDef, Types } from "@prisma/client/runtime/client";
 import { DeferredPromise } from "@open-draft/deferred-promise";
+import type { RelationField } from "./utils/relations";
 
 export type Modifier = "is" | "isNot" | "some" | "none" | "every";
 export type LogicalOperator = "AND" | "OR" | "NOT";
@@ -61,14 +61,17 @@ export type OperationCall<ExtArgs extends Types.Extensions.InternalArgs> = {
 
 export type Scope<ExtArgs extends Types.Extensions.InternalArgs> = {
   parentParams: Omit<NestedParams<ExtArgs>, "query">;
-  relations: { to: Prisma.DMMF.Field; from: Prisma.DMMF.Field };
+  relations: { to: RelationField; from: RelationField };
   modifier?: Modifier;
   logicalOperators?: LogicalOperator[];
 };
 
-export type NestedParams<ExtArgs extends Types.Extensions.InternalArgs> = {
-  query: (args: any, operation?: NestedOperation) => Prisma.PrismaPromise<any>;
-  model: keyof Prisma.TypeMap<ExtArgs>["model"];
+export type NestedParams<
+  ExtArgs extends Types.Extensions.InternalArgs,
+  TMap extends TypeMapDef = TypeMapDef
+> = {
+  query: (args: any, operation?: NestedOperation) => Promise<any>;
+  model: string & keyof TMap["model"];
   args: any;
   operation: NestedOperation;
   scope?: Scope<ExtArgs>;
